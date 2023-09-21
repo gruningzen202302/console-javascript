@@ -8,9 +8,10 @@ var fedora = 2662
 var chromeOs = 927
 
 var linux = ubuntu + wsl + debian + otherLinux + arch + redHat + fedora + chromeOs
+linux -= wsl // WSL users are also Windows users
 
 var windows = 40917
 
-console.log(`${windows}) 
+console.log(`The total amount of Windows developers is ${windows}`) 
 
-console.log(linux)
+console.log(`The total amount of Linux developers is ${linux}`)
