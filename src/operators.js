@@ -15,3 +15,7 @@ var windows = 40917
 console.log(`The total amount of Windows developers is ${windows}`) 
 
 console.log(`The total amount of Linux developers is ${linux}`)
+
+console.log(windows > linux)
+console.log(windows == linux)
+console.log(windows != linux)
