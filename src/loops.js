@@ -27,9 +27,13 @@ while(year <=2022){
     year++ 
 }
 
-var cubes = 'ABCDEFG';
-//styling console output using CSS with a %c format specifier
-for (var i = 0; i < 7; i++) {
-    var styles = "font-size: 40px; border-radius: 10px; border: 1px solid blue; background: pink; color: purple";
-    console.log("%c" + cubes[i], styles)
+var cubes = 'QiMono'
+
+for (var i = 0; i < 6; i++) {
+    let font= 'font-size: 40px;'
+    let border= 'border-radius: 10px; border: 1px solid blue;'
+    let color= 'background: pink; color: purple;'
+    let styleCss = font + border + color
+    let formatSpecifier = "%c"
+    console.log(formatSpecifier + cubes[i], styleCss)
 }
