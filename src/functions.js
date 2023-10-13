@@ -87,3 +87,16 @@ function Person() {
 
 let per = new Person()
 console.log(per)
+
+const foo =(sep,...rest)=>{
+  let text = '' 
+  for(let i=0;i<rest.length;i++){
+      text += rest[i] + sep
+  }
+  return text
+}
+
+const msg = foo(' ++ ','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o')
+
+msg
+console.log(msg)
