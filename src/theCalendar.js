@@ -26,17 +26,14 @@ TheCalendar.prototype.book = function (currentEventStart, currentEventEnd) {
         bookedEventEnd
     )
 
-    const startIsOverlapped =
+    if (
       (bookedEventStart < currentEventStart &&
         currentEventStart < bookedEventEnd) ||
-      (currentEventStart < bookedEventStart &&
-        bookedEventStart < currentEventEnd)
-
-    const endIsOverlapped =
       (bookedEventStart < currentEventEnd &&
         currentEventEnd < bookedEventEnd) ||
-      (currentEventStart < bookedEventEnd && bookedEventEnd < currentEventEnd)
-    if (startIsOverlapped || endIsOverlapped) return false
+      (currentEventStart < bookedEventStart && bookedEventEnd < currentEventEnd)
+    )
+      return false
   }
 
   this.bookedEvents.push([currentEventStart, currentEventEnd])
