@@ -26,14 +26,17 @@ TheCalendar.prototype.book = function (currentEventStart, currentEventEnd) {
         bookedEventEnd
     )
 
-    const conditionsForNextEventStartOverlap =
-      bookedEventStart < currentEventStart && currentEventStart < bookedEventEnd
+    const startIsOverlapped =
+      (bookedEventStart < currentEventStart &&
+        currentEventStart < bookedEventEnd) ||
+      (currentEventStart < bookedEventStart &&
+        bookedEventStart < currentEventEnd)
 
-    const conditionsForPreviusEventOverlap =
-      currentEventStart < bookedEventStart && bookedEventStart < currentEventEnd
-
-    if (conditionsForNextEventStartOverlap || conditionsForPreviusEventOverlap)
-      return false
+    const endIsOverlapped =
+      (bookedEventStart < currentEventEnd &&
+        currentEventEnd < bookedEventEnd) ||
+      (currentEventStart < bookedEventEnd && bookedEventEnd < currentEventEnd)
+    if (startIsOverlapped || endIsOverlapped) return false
   }
 
   this.bookedEvents.push([currentEventStart, currentEventEnd])
@@ -48,6 +51,7 @@ const events = [
   /*      */ [15, /*   */ 25],
   /*           */ [20, /*   */ 30],
   [5, /**/ 12],
+  /**/ [8 /**                       */, 35],
 ]
 
 events.forEach((event) => console.log(calendar.book(event[0], event[1])))
