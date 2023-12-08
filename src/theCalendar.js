@@ -3,17 +3,12 @@ var TheCalendar = function () {};
 TheCalendar.prototype.bookedEvents = []
 
 /**
- * @param {number} currentEventStart
- * @param {number} currentEventEnd
+ * @param {number} start
+ * @param {number} end
  * @return {boolean}
  */
-TheCalendar.prototype.book = function (currentEventStart, currentEventEnd) {
-  console.log(
-    "currentEventStart " +
-      currentEventStart +
-      " currentEventEnd " +
-      currentEventEnd
-  )
+TheCalendar.prototype.book = function (start, end) {
+  console.log("currentEventStart " + start + " currentEventEnd " + end)
 
   for (let i = 0; i < this.bookedEvents.length; i++) {
     const bookedEventStart = this.bookedEvents[i][0]
@@ -27,16 +22,14 @@ TheCalendar.prototype.book = function (currentEventStart, currentEventEnd) {
     )
 
     if (
-      (bookedEventStart < currentEventStart &&
-        currentEventStart < bookedEventEnd) ||
-      (bookedEventStart < currentEventEnd &&
-        currentEventEnd < bookedEventEnd) ||
-      (currentEventStart < bookedEventStart && bookedEventEnd < currentEventEnd)
+      (bookedEventStart < start && start < bookedEventEnd) ||
+      (bookedEventStart < end && end < bookedEventEnd) ||
+      (start < bookedEventStart && bookedEventEnd < end)
     )
       return false
   }
 
-  this.bookedEvents.push([currentEventStart, currentEventEnd])
+  this.bookedEvents.push([start, end])
 
   return true
 }
@@ -53,3 +46,9 @@ const events = [
 
 events.forEach((event) => console.log(calendar.book(event[0], event[1])))
 console.log(calendar.bookedEvents)
+
+/*
+
+https://leetcode.com/problems/my-calendar-i/
+
+*/
